@@ -1,0 +1,19 @@
+<%- include ('../partials/header') %> 
+
+<div class="container w-50 my-5 p-5">
+    <h1 class = "my-5 border-bottom border-dark-sm pb-4 w-75">EDIT YOUR COMMENT</h1>
+
+    <form action="/campgrounds/<%= campground_id%>/comments/<%= comment.id %>?_method=PUT" method="POST" >
+        <div class = "my-2 w-75">
+            <input class = "form-control" type="text" value="<%=comment.text%>"  name="comment[text]">
+        </div>
+        <div class = "my-2 w-75">
+            <input class = "form-control btn btn-warning" type="submit"> 
+        </div>
+    </form>
+
+    <a href="/campgrounds" class="btn btn-danger">Home</a>
+
+</div>
+
+<%- include ('../partials/footer') %> 

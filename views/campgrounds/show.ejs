@@ -1,0 +1,138 @@
+<%- include ('../partials/header') %> 
+
+
+<div class = 'display-4 text-center my-4 '>
+    <%= campground.name.toUpperCase() %> 
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <!-- <div class="col-md-3">
+            <div class = "lead mb-3">SiteView</div>
+            <ul class = "list-group">
+                <li class = "list-group-item active">Info 1</li>
+                <li class = "list-group-item">Info 2</li>
+                <li class = "list-group-item">Info 3</li>
+            </ul>
+        </div> -->
+        <div class = "col-md-12">
+            <div class = "card d-block">
+                <img src="<%= campground.image %> " class = "card-img-top" alt="">
+                <div class = "p-3">
+                    <div class="card-title">
+                        <div class= "container">
+                            <div class= "row">
+                                <h5 id ="name" class = "text-primary"><a href = '#'><%= campground.name %></a></h5>
+                                <p class ="ml-auto"><%= campground.price %> Stars</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class = "card-text font-weight-light my-0" style="font-size:0.9em;"><%= campground.description %></p>
+                    <p>
+                    <em> Submitted by:   </em><%=campground.author.username %> 
+                    </p>
+
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                        <a href="/campgrounds/<%= campground._id %>/edit" class ="btn btn-warning">Edit</a>
+                        <form id="Deletecampground" action="/campgrounds/<%= campground.id %>?_method=DELETE" method="POST">
+                            <button type="submit" id = "Deletecampground" class ="btn btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class = "card bg-dark text-white mt-3">
+                <div class = card-header>
+                    <a class = "btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add Comments</a>
+                </div>
+                <div class = "card-body">
+                    <% campground.comments.forEach(function(comment){ %>
+                        <div class="container">
+                            <div class="row">
+                                <p class = "card-title"><%= comment.author.username %> :</p>
+                                <p class = "card-title ml-auto "><%=comment.author.date%> </p>
+                            </div>
+                            <p class = "card-text d-inline"><%= comment.text %> </p><br>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit  " class="btn btn-sm btn-light">Edit</a>
+                            <form id ="deletecomment" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class = "btn btn-sm btn-light" >Delete</button>
+                            </form>
+                            <% } %>
+                            <hr>
+                        </div>
+                    <% })%>
+                </div> 
+            </div>
+        </div>
+        <div id="map">
+            
+        </div>
+    </div>
+</div>
+<!-- <script>
+    function initMap() {
+      var lat ="<%= campground.lat %>";
+      var lng ="<%= campground.lng %>";
+      var center = {lat: lat, lng: lng };
+      var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: center,
+          scrollwheel: false
+      });
+      var contentString = `
+        <strong><%= campground.name %><br />
+        <%= campground.location %></strong>
+        <p><%= campground.description %></p>
+      `
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      var marker = new google.maps.Marker({
+          position: center,
+          map: map
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4G2VHizRmQJ9X2SoGgNn5mu9IqSxeMtU&callback=initMap"></script> -->
+  <div>
+    <div class="first-page-heading navtext">
+        <footer class="row mx-5">
+            <ul>
+                <h3 class = "footertext">
+                    Developed by-
+                </h3>
+                <li type="none">
+                    Sanskar jain
+                </li>
+                <li type="none">
+                    Prashant Saxena
+                </li>
+                <li type="none">
+                    Abhishek Rouniyar
+                </li>
+            </ul>
+            <ul>
+                <p class = "text-light navtext my-5" style="margin-left: 10em;font-size:large;"> 
+                    A PROJECT BY STUDENTS OF SHARDA UNIVERSITY
+                </p>
+            </ul>
+            <ul style="margin-left: 5em;">
+                <h3 class = "footertext" >
+                    Submitted To-
+                </h3>
+                <li type="none">
+                    Mr. Manish Verma
+                </li>
+            </ul>
+        </footer>
+    </div>  
+    
+</div>
+
+</div>
+<%- include ('../partials/footer') %> 
+
+

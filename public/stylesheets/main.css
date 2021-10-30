@@ -1,0 +1,55 @@
+body{
+    background-image: radial-gradient(circle, #e8ebaf, #ffcca3, #ffb2b4, #dfa5cf, #9fa3db);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.card {
+    border:none;
+    border-radius:0rem;
+}
+
+#name {
+    text-transform: capitalize;
+}
+
+.navbar-toggler {
+    margin-left: auto;
+    margin-right: 3rem;
+}
+
+#Deletecampground {
+    display:inline;
+}
+
+#campgroundimage{
+    height:9rem;
+    width: 100%;;
+}
+
+#deletecomment {
+    display:inline;
+}
+
+.first-page-heading{
+    background-color:rgba(0,0,0,0.5);
+    margin-top: 1em;
+    padding: 2em;
+}
+
+#siteviewword{
+    background-color: white;
+    padding: 1em;
+}
+
+Google Maps
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.navtext{
+    font-size: large;
+    font-family:"Nunito Sans";
+    font-weight: 500;
+}
